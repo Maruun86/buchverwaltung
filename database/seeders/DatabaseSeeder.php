@@ -28,14 +28,13 @@ class DatabaseSeeder extends Seeder
                 'email' => 'test@example.com',
             ]);
 
-        $author = Author::factory()->create([
-            'name' => 'Test Author'
-            
-        ]);
-        $thema = Thema::factory()->create();
-        $distributor = Distributor::factory()->create();
-        
         for ($i=0; $i < 20; $i++) { 
+            
+            $author = Author::factory()->create();
+            $thema = Thema::factory()->create();
+
+            $distributor = Distributor::factory()->create();
+
             $book = Book::factory()->create([
                 'thema_id' => $thema->id,
                 'author_id' => $author->id,
@@ -47,9 +46,5 @@ class DatabaseSeeder extends Seeder
                 'book_id' => $book->id
             ]);
         }
-       
-
-        
-
     }
 }

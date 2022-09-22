@@ -2,7 +2,7 @@
 
 <div class="col-sm-4 bg-black text-white text-center border">
     <div class="row ">
-        <div class="col-sm">
+        <div class="col-sm py-2">
             <a href="/books/{{$book->id}}">
                 <img 
                 src="{{$book->cover ? asset('storage/' . $book->cover) : asset('/images/no-image.gif')}}" 

@@ -2,7 +2,7 @@
     <div class="container px-5">
         <div class="container text-white px-5">
             <h1 class="text-center">Buch hinzufügen</h1>
-            <form action={{route('STORE_NEW_BOOK')}} method="post" class="px-5">
+            <form action={{route('STORE_NEW_BOOK')}} method="post" enctype="multipart/form-data" class="px-5" >
                 @csrf
                     <div class="col">
                         <div class="mb-3">
@@ -22,6 +22,10 @@
                             <div class="mb-3">
                                 <label for="description" class="form-label">Beschreibung</label>
                               <textarea class="form-control" name="description" id="description" rows="5"></textarea>
+                            </div>
+                            <div class="mb-3">
+                              <label for="cover" class="form-label">Buchbild</label>
+                              <input type="file" class="form-control" name="cover" id="cover" placeholder="" aria-describedby="fileHelpId">
                             </div>
                             <button type="submit" class="btn btn-primary">Eintragen</button>
                         </div>

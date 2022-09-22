@@ -35,7 +35,7 @@ class BookController extends Controller
 
     //Store Book Entry
     public function store(Request $request){
-        $formFields = validator([
+        $formFillable = $request->validate([
             'name' => ['required', Rule::unique('books', 'name')],
             'author' => 'required',
             'thema' => 'required',
@@ -43,40 +43,32 @@ class BookController extends Controller
             'distributor_adresse' => 'required',
             'description' => 'required'
         ]);
-        //create entrys when not exist and get id
-       $resultAuthor = Author::where("name", $request['name'])->exists();
-       if (!$resultAuthor){
-            Author::create(
-                [
-                'name' => $request['name'],             
-                ]);
-            }
-       $resultThema = Thema::where("title", $request['thema'])->exists();
-       if (!$resultThema){
-            Thema::create([
-                'title' => $request['thema']
+
+        //create entrys when not exist
+        $author = Author::firstOrCreate(['name'=> $request['name']]); 
+        $thema = Thema::firstOrCreate(["title" =>$request['thema']]);
+        $dist = Distributor::firstOrCreate([
+            "name" => $request['distributor']
+        ],[
+            'adresse' => $request['distributor_adresse']
         ]);
-       }
-      
-       $resultDistributor = Distributor::where("name", $request['distributor'])->exists();
-       if (!$resultDistributor){
-            Distributor::create([
-                'name' => $request['distributor'],
-                'adresse' => $request['distributor_adresse']
-            ]);
-       }
-       $fillable = [
-            'name' => $request['name'],
-            'author_id' => $this->getId('App\Models\Author', 'name', $request['name']),
-            'thema_id' =>  $this->getId('App\Models\Thema', 'title', $request['thema']),
-            'distributor_id' => $this->getId('App\Models\Distributor', 'name', $request['distributor']),
-            'description' =>  $request['description']
-       ];   
-       Book::create($fillable);
 
+        $book = new Book();
+        $book->name = $request['name'];
+        $book->author()->associate($author);
+        $book->thema()->associate($thema);
+        $book->distributor()->associate($dist);
+        $book->description = $request['description'];
+        if($request->hasFile('cover'))
+            {
+                $book->cover = $request->file('cover')->store('covers', 'public');
+            }
+
+        $book->save();
+        
        return redirect(route('INDEX'))->with('message', 'Buch wurde hinzugefügt');
-
     }
+
     public function getId($model, $table, $value) {
         try {
             return  $model::where($table, $value)->first()->id;
