@@ -8,8 +8,6 @@ use App\Models\Author;
 use App\Models\Distributor;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\DB;
-use PhpParser\Node\Stmt\TryCatch;
 
 class BookController extends Controller
 {
@@ -69,12 +67,11 @@ class BookController extends Controller
        return redirect(route('INDEX'))->with('message', 'Buch wurde hinzugefügt');
     }
 
-    public function getId($model, $table, $value) {
-        try {
-            return  $model::where($table, $value)->first()->id;
-        } catch (\Throwable $th) {
-            dd($th,'Fehler bei getID, namen richtig?');
-        }
+    //Edit Book Form
+    public function edit(Book $book){
+        return view('books.edit', [
+            'book' => $book
+        ]);
     }
  
 }

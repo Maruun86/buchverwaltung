@@ -15,7 +15,7 @@
                             <p class="form-text text-muted">
                                 Bitte mit Komma trennen
                             </p>
-                            <label for="distributor" class="form-label">Verlags Adresse</label>
+                            <label for="distributor" class="form-label">Verlags Name</label>
                             <input type="text" name="distributor" id="distributor" class="form-control" placeholder="" aria-describedby="helpId">
                             <label for="distributor_adresse" class="form-label">Verlags Adresse</label>
                             <input type="text" name="distributor_adresse" id="distributor_adresse" class="form-control" placeholder="" aria-describedby="helpId">
