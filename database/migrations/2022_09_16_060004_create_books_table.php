@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('cover')->nullable();
-            $table->foreignID('thema_id')->constrained('themas');
-            $table->foreignID('author_id')->constrained('authors');
-            $table->foreignID('distributor_id')->constrained('distributors');
+            $table->foreignID('thema_id');
+            $table->foreignID('author_id');
+            $table->foreignID('distributor_id');
             $table->longText('description');
         });
     }

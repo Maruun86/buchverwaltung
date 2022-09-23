@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Book;
+use App\Models\User;
 use App\Models\Thema;
 use App\Models\Author;
 use App\Models\Review;
@@ -32,7 +33,6 @@ class DatabaseSeeder extends Seeder
             
             $author = Author::factory()->create();
             $thema = Thema::factory()->create();
-
             $distributor = Distributor::factory()->create();
 
             $book = Book::factory()->create([
@@ -41,8 +41,8 @@ class DatabaseSeeder extends Seeder
                 'distributor_id' => $distributor->id
                
             ]);
-            Review::factory()->create([
-                'user_id' => $user->id,
+            Review::factory(5)->create([
+                'user_id' => User::factory()->create()->id,
                 'book_id' => $book->id
             ]);
         }

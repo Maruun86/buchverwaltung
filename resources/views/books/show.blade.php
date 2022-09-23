@@ -1,3 +1,4 @@
+
 <x-layout>
     <a href={{route('INDEX')}} class="btn btn-primary btn-md active" role="button" aria-pressed="true">Zurück</a>
     <div class="container-fluid text-center text-white">
@@ -16,4 +17,15 @@
       </div>
     </div>
     <a href={{route('EDIT_BOOK', $book)}} class="btn btn-primary btn-md active" role="button" aria-pressed="true">Edit</a>
+    <a href={{route('DELETE_BOOK', $book)}} class="btn btn-primary btn-md active" role="button" aria-pressed="true">Löschen</a>
+    <div class="container text-white">
+      <h1 class="text-center"> Reviews</h2>
+      <h3 class="text-center">Bewertung: {{$score}}</h1>
+       <ul>
+        @foreach ($reviews as $review)
+          <x-review-card :review="$review"/>
+        @endforeach
+      </ul>
+
+    </div>
 </x-layout>

@@ -30,12 +30,14 @@ Route::get('/books/create', [BookController::class, 'create'])->name('CREATE_BOO
 //Store Book Entry
 Route::post('/books', [BookController::class, 'store'])->name('STORE_NEW_BOOK');
 
-
-//Show Single Book
-Route::get('/books/{book}', [BookController::class, 'show'])->name('SHOW_BOOK');
-
 //Show Book Edit
 Route::get('/books/{book}/edit', [BookController::class, 'edit'])->name('EDIT_BOOK');
 
-//Editbook
-Route::put('/books', [BookController::class, 'create']);
+//Cofirm Edit
+Route::put('/books', [BookController::class, 'edit_confirm'])->name('EDIT_CONFIRM');
+
+//Delete Book
+Route::get('/books/{book}/delete', [BookController::class, 'delete'])->name('DELETE_BOOK');
+
+//Show Single Book
+Route::get('/books/{book}', [BookController::class, 'show'])->name('SHOW_BOOK');

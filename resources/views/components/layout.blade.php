@@ -11,7 +11,7 @@
     <body class="bg-dark">
         {{-- Header --}}
         <div class="container-fluid bg-dark text-white text-center">
-            <h1 class="display-1">Buchverwaltung</h1>
+            <a href={{route('INDEX')}}><h1 class="display-1">Buchverwaltung</h1></a>
         </div>
         <ul class="nav justify-content-center  ">
             <li class="nav-item">
@@ -30,9 +30,7 @@
         
         </main>
         {{-- Footer --}}
-        <div class="row p-2 bg-dark" >
-            <div class="col-sm-3 " ><h6>Pierre Antonschmidts</h5></div>
-        </div>
+        <div class="container" ><h6>Pierre Antonschmidts</h5></div>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     </body>
 </html>
