@@ -1,6 +1,13 @@
 
 <x-layout>
-    <a href={{route('INDEX')}} class="btn btn-primary btn-md active" role="button" aria-pressed="true">Zurück</a>
+  <ul class='text-center mg-2'>
+    <li>
+      <a href={{route('INDEX')}} class="btn btn-primary btn-md active" role="button" aria-pressed="true">Zurück</a>
+      <a href={{route('EDIT_BOOK', $book)}} class="btn btn-primary btn-md active" role="button" aria-pressed="true">Edit</a>
+      <a href={{route('DELETE_BOOK', $book)}} class="btn btn-primary btn-md active" role="button" aria-pressed="true">Löschen</a>
+    </li>
+  </ul>
+    
     <div class="container-fluid text-center text-white">
         <div class="container py-2">
           <img 
@@ -16,8 +23,7 @@
         <p>{{$book->description}}</p>
       </div>
     </div>
-    <a href={{route('EDIT_BOOK', $book)}} class="btn btn-primary btn-md active" role="button" aria-pressed="true">Edit</a>
-    <a href={{route('DELETE_BOOK', $book)}} class="btn btn-primary btn-md active" role="button" aria-pressed="true">Löschen</a>
+   
     <div class="container text-white">
       <h1 class="text-center"> Reviews</h2>
       <h3 class="text-center">Bewertung: {{$score}}</h1>

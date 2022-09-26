@@ -13,17 +13,7 @@
         <div class="container-fluid bg-dark text-white text-center">
             <a href={{route('INDEX')}}><h1 class="display-1">Buchverwaltung</h1></a>
         </div>
-        <ul class="nav justify-content-center  ">
-            <li class="nav-item">
-                <a class="nav-link active" href="#" aria-current="page">Active link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href={{route('CREATE_BOOK_FORM')}}>Create</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled link</a>
-            </li>
-        </ul>
+
         <main>
                 
             {{$slot}}

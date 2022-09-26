@@ -21,6 +21,7 @@ class BookController extends Controller
         ]);
     }
 
+
     //Show single Book
     public function show(Book $book){
 

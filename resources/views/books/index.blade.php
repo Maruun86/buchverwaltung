@@ -1,6 +1,7 @@
 
 
 <x-layout>
+    @include('partials._nav')
     @if (\Session:: has('message'))
     <div class="container alert alert-success">
         <ul>

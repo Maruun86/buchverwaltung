@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\ManageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,9 @@ Auth::routes();
 //List all Books
 Route::get('/', [BookController::class, 'index'])->name('INDEX');
 
+//Show Bookmanagment
+Route::get('/manage', [ManageController::class, 'manage_statistic'])->name('MANAGE_STATISTIC');
+
 //Show Create Book Form
 Route::get('/books/create', [BookController::class, 'create'])->name('CREATE_BOOK_FORM');
 
@@ -41,3 +45,9 @@ Route::get('/books/{book}/delete', [BookController::class, 'delete'])->name('DEL
 
 //Show Single Book
 Route::get('/books/{book}', [BookController::class, 'show'])->name('SHOW_BOOK');
+
+
+//Show Authors
+Route::get('/books/manage/authors', [BookController::class, 'manageAuthors'])->name('MANAGE_AUTHORS');
+//Show Distributor
+Route::get('/books/manage/distributors', [BookController::class, 'manageDistributors'])->name('MANAGE_DISTRIBUTORS');
